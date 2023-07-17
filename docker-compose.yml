@@ -3,8 +3,12 @@ version: '3.8'
 services:
   database:
     # image: postgres:15-alpine
+    ports:
+      - "5433:5432/tcp"
+    env_file:
+      - .env
     build:
       context: ./
       dockerfile: Dockerfile
       args:
-        IMAGE_TAG: docke
+        IMAGE_TAG: ${IMAGE_TAG}
