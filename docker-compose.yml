@@ -2,15 +2,19 @@ version: '3.8'
 
 services:
   database:
+    container_name: optochka-postgres-db
     # image: postgres:15-alpine
     ports:
       - "5000:5432/tcp"
     env_file:
       - .env
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     build:
       context: ./
       dockerfile: Dockerfile
       args:
         IMAGE_TAG: ${IMAGE_TAG}
+
+volumes:
+  postgres-data:
