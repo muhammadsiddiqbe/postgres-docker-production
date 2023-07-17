@@ -4,9 +4,11 @@ services:
   database:
     # image: postgres:15-alpine
     ports:
-      - "5433:5432/tcp"
+      - "5000:5432/tcp"
     env_file:
       - .env
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     build:
       context: ./
       dockerfile: Dockerfile
